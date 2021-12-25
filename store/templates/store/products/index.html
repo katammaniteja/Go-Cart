@@ -3,22 +3,23 @@
 <div class="py-3 bg-primary">
     <div class="container">
         <a href="{% url 'home' %}" class="text-white">Home /</a>
-        <a href="javascript:void(0)" class="text-white">Collections</a>
+        <a href="{% url 'collections' %}" class="text-white">Collections /</a>
+        <a href="javascript:void(0)" class="text-white">{{category.name}}</a>
     </div>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Collections</h1>
+            <h1>{{category.name}}</h1>
             <hr>
             <div class="row">
-                {% for item in category %}
-                <div class="col-md-3">
-                    <a href="{% url 'collectionsview' item.slug %}">
+                {% for item in products %}
+                <div class="col-md-4">
+                    <a href="">
                         <div class="card">
                             <div class="card-body" style="height: 220px;">
-                                <img src="{{item.image.url}}" class="w-100 h-100">
+                                <img src="{{item.product_image.url}}" class="w-100 h-100">
                             </div>
                             <div class="card-footer">
                                 <h4 class="card-text text-center">{{item.name}}</h4>
