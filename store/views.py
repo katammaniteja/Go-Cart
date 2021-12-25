@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponseRedirect
 from .models import Categories,Products
+from django.urls import reverse
 
 # Create your views here.
 def home(request):
@@ -16,3 +17,4 @@ def collectionsView(request,slug):
         category=Categories.objects.filter(slug=slug).first()
         context={"products":products,"category":category};
         return render(request, 'store/products/index.html',context)
+    return HttpResponseRedirect(reverse('home'))
