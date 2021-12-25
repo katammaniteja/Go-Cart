@@ -1,0 +1,23 @@
+{% extends 'store/layouts/main.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Collections</h1>
+            <hr>
+            <div class="row">
+                {% for item in category %}
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{{item.image.url}}" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-text text-center">{{item.name}}</h4>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
