@@ -13,5 +13,6 @@ urlpatterns=[
     path('login/',authview.loginpage,name='loginpage'),
     path('logout/',authview.logoutpage,name='logoutpage'),
 
-    path('add-to-cart',cart.addtocart,name='addtocart')
+    path('add-to-cart',cart.addtocart,name='addtocart'),
+    path('cart',cart.viewcart,name='viewcart')
 ]

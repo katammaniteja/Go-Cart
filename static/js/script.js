@@ -28,7 +28,19 @@ $(document).ready(function () {
                 csrfmiddlewaretoken: token,
             },
             success: function (response) {
-                alertify.success(response.status);
+                var tag=response.tag;
+                if(tag=="success"){
+                    alertify.success(response.status);
+                }
+                else if(tag=="warning"){
+                    alertify.warning(response.status);
+                }
+                else if(tag=="error"){
+                    alertify.error(response.status);
+                }
+                else{
+                    alertify.notify(response.status)
+                }
             }
         });
     });

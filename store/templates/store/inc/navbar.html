@@ -19,7 +19,7 @@
             {{user.username}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Cart</a>
             <a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{% url 'logoutpage' %}">Logout</a>
@@ -33,9 +33,7 @@
           <a class="nav-link" href="{% url 'register' %}">Register</a>
         </li>
         {% endif %}
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
+
       </ul>
     </div>
   </div>
