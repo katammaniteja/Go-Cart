@@ -29,7 +29,7 @@ def loginpage(request):
                 messages.success(request,"Logged in successfully")
                 return redirect("/")
             else:
-                messages.success(request,"Invalid Username or Password")
+                messages.error(request,"Invalid Username or Password")
                 return redirect('/login')
         return render(request,'store/auth/login.html')
 
