@@ -9,21 +9,8 @@ a:hover {
 .bread_scrumb{
   margin-bottom: 30px;
 }
-.product-viewtag{
-    background-color: red;
-    color: white;
-    font-size: 11px;
-    line-height: 1;
-    position: absolute;
-    text-align: center;
-    text-transform: uppercase;
-    top: 22px;
-    margin-left: 17.5 rem;
-    padding: 7px 10px;
-    font-weight: 600;
-    min-width: 45px;
-}
-.product_view{
-    box-shadow: 2px 2px lightgray,-2px -2px lightgray;
-    border-radius:10px;
+.tag{
+  font-size: 16px;
+  float: right;
+  color: white;
 }
