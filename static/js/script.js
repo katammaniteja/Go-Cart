@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $(document).on('click','.decrement-btn',function(e){
+    $(document).on('click', '.decrement-btn', function (e) {
         e.preventDefault();
 
         var value = $(this).closest('.product_data').find('.qty-input').val();
@@ -8,16 +8,16 @@ $(document).ready(function () {
         $(this).closest('.product_data').find('.qty-input').val(value);
     })
 
-    $(document).on('click','.increment-btn',function(e){
+    $(document).on('click', '.increment-btn', function (e) {
         e.preventDefault();
 
         var value = $(this).closest('.product_data').find('.qty-input').val();
-        value = parseInt(value); 
+        value = parseInt(value);
         if (value < 10) value++;
         $(this).closest('.product_data').find('.qty-input').val(value);
     })
 
-    $(document).on('click','.addtoCartBtn',function(e){
+    $(document).on('click', '.addtoCartBtn', function (e) {
         e.preventDefault();
         var prod_id = $(this).closest('.product_view').find('.prod_id').val();
         var prod_qty = $(this).closest('.product_view').find('.qty-input').val();
@@ -47,7 +47,7 @@ $(document).ready(function () {
             }
         });
     });
-    $(document).on('click','.changeQuantity',function(e){
+    $(document).on('click', '.changeQuantity', function (e) {
         e.preventDefault();
         var prod_id = $(this).closest('.product_data').find('.prod_id').val();
         var prod_qty = $(this).closest('.product_data').find('.qty-input').val();
@@ -65,7 +65,7 @@ $(document).ready(function () {
             }
         });
     });
-    $(document).on('click','.delete-cart-item',function(e){
+    $(document).on('click', '.delete-cart-item', function (e) {
         e.preventDefault();
         var prod_id = $(this).closest('.product_data').find('.prod_id').val();
         var token = $('input[name=csrfmiddlewaretoken]').val();
@@ -77,8 +77,8 @@ $(document).ready(function () {
                 csrfmiddlewaretoken: token,
             },
             success: function (response) {
-                alertify.success(response.status);
-                $('#cartdata').load(location.href +" #cartdata")
+                alertify.notify(response.status);
+                $('#cartdata').load(location.href + " #cartdata")
             }
         });
     })

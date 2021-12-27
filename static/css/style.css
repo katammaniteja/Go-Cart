@@ -14,3 +14,6 @@ a:hover {
   float: right;
   color: white;
 }
+.active{
+  font-weight: 600;
+}
