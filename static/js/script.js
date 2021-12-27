@@ -61,7 +61,19 @@ $(document).ready(function () {
                 csrfmiddlewaretoken: token,
             },
             success: function (response) {
-
+                var tag = response.tag;
+                if (tag == "success") {
+                    alertify.success(response.status);
+                }
+                else if (tag == "warning") {
+                    alertify.warning(response.status);
+                }
+                else if (tag == "error") {
+                    alertify.error(response.status);
+                }
+                else {
+                    alertify.notify(response.status)
+                }
             }
         });
     });
@@ -81,5 +93,50 @@ $(document).ready(function () {
                 $('#cartdata').load(location.href + " #cartdata")
             }
         });
-    })
+    });
+    $(document).on('click', '.addtoWishlist', function (e) {
+        e.preventDefault();
+        var prod_id = $(this).closest('.product_view').find('.prod_id').val();
+        var token = $('input[name=csrfmiddlewaretoken]').val();
+        $.ajax({
+            method: "POST",
+            url: "/add-to-wishlist",
+            data: {
+                'product_id': prod_id,
+                csrfmiddlewaretoken: token,
+            },
+            success: function (response) {
+                var tag = response.tag;
+                if (tag == "success") {
+                    alertify.success(response.status);
+                }
+                else if (tag == "warning") {
+                    alertify.warning(response.status);
+                }
+                else if (tag == "error") {
+                    alertify.error(response.status);
+                }
+                else {
+                    alertify.notify(response.status)
+                }
+            }
+        });
+    });
+    $(document).on('click', '.delete-wishlist-item', function (e) {
+        e.preventDefault();
+        var prod_id = $(this).closest('.product_data').find('.prod_id').val();
+        var token = $('input[name=csrfmiddlewaretoken]').val();
+        $.ajax({
+            method: "POST",
+            url: "/delete-wishlist-item",
+            data: {
+                'product_id': prod_id,
+                csrfmiddlewaretoken: token,
+            },
+            success: function (response) {
+                alertify.notify(response.status);
+                $('#whislistdata').load(location.href + " #whislistdata")
+            }
+        });
+    });
 });

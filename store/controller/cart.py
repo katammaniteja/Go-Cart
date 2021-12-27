@@ -10,7 +10,7 @@ def addtocart(request):
             prod_id=int(request.POST.get('product_id'))
             product_check=Products.objects.get(id=prod_id)
             if(product_check):
-                if(Cart.objects.filter(user=request.user.id,product_id=prod_id)):
+                if(Cart.objects.filter(user_id=request.user.id,product_id=prod_id)):
                     return JsonResponse({'status':"Product already in the cart",'tag':"success"})
                 else:
                     prod_qty=int(request.POST.get('product_qty'))
