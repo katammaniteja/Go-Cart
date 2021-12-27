@@ -17,7 +17,7 @@ def addtocart(request):
 
                     if product_check.quantity >= prod_qty:
                         Cart.objects.create(user=request.user,product_id=prod_id,product_qty=prod_qty)
-                        return JsonResponse({'status':"Product Added Successfully",'tag':'success'})
+                        return JsonResponse({'status':"Product added to cart",'tag':'success'})
                     else:
                         return JsonResponse({'status':"Only "+str(product_check.quantity)+" quantity available",'tag':'notify'})
             else:
@@ -27,11 +27,15 @@ def addtocart(request):
     return redirect('/')
 
 def viewcart(request):
-    cart=Cart.objects.filter(user=request.user)
-    context={
-        'cart':cart,
-    }
-    return render(request,"store/cart.html",context)
+    if request.user.is_authenticated:
+        cart=Cart.objects.filter(user=request.user)
+        context={
+            'cart':cart,
+        }
+        return render(request,"store/cart.html",context)
+    else:
+        messages.error(request,"Please login to view your cart")
+        return redirect('/')
 
 def updatecart(request):
     if request.method=='POST':
@@ -50,6 +54,6 @@ def deletecartitem(request):
         if(Cart.objects.filter(user=request.user,product_id=prod_id)):
             cartitem=Cart.objects.get(product_id=prod_id,user=request.user)
             cartitem.delete()
-            return JsonResponse({'status':"Deleted Successfully",'tag':'success'})
+            return JsonResponse({'status':"Item removed from cart",'tag':'success'})
     return redirect("/")
-            
+             
