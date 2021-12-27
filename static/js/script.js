@@ -1,18 +1,21 @@
-document.querySelector('.decrement-btn').addEventListener('click', (event) => {
-    event.preventDefault();
-    var value = document.querySelector('.qty-input').value;
-    value = parseInt(value);
-    if (value > 1) value--;
-    document.querySelector('.qty-input').value = value;
-})
-document.querySelector('.increment-btn').addEventListener('click', (event) => {
-    event.preventDefault();
-    var value = document.querySelector('.qty-input').value;
-    value = parseInt(value);
-    if (value < 10) value++;
-    document.querySelector('.qty-input').value = value;
-})
 $(document).ready(function () {
+    $('.decrement-btn').click(function (e) {
+        e.preventDefault();
+
+        var value = $(this).closest('.product_data').find('.qty-input').val();
+        value = parseInt(value);
+        if (value > 1) value--;
+        $(this).closest('.product_data').find('.qty-input').val(value);
+    })
+    $('.increment-btn').click(function (e) {
+        e.preventDefault();
+
+        var value = $(this).closest('.product_data').find('.qty-input').val();
+        value = parseInt(value);
+        if (value < 10) value++;
+        $(this).closest('.product_data').find('.qty-input').val(value);
+    })
+
     $('.addtoCartBtn').click(function (e) {
         e.preventDefault();
         var prod_id = $(this).closest('.product_view').find('.prod_id').val();
@@ -28,17 +31,17 @@ $(document).ready(function () {
                 csrfmiddlewaretoken: token,
             },
             success: function (response) {
-                var tag=response.tag;
-                if(tag=="success"){
+                var tag = response.tag;
+                if (tag == "success") {
                     alertify.success(response.status);
                 }
-                else if(tag=="warning"){
+                else if (tag == "warning") {
                     alertify.warning(response.status);
                 }
-                else if(tag=="error"){
+                else if (tag == "error") {
                     alertify.error(response.status);
                 }
-                else{
+                else {
                     alertify.notify(response.status)
                 }
             }
