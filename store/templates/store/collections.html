@@ -17,12 +17,14 @@
                 <div class="col-md-3">
                     <a href="{% url 'collectionsview' item.slug %}">
                         <div class="card">
-                            <div class="card-body" style="height: 220px;">
-                                <img src="{{item.image.url}}"  class="w-100 mh-100">
+                            <div class="card-body">
+                                <div class="category-image" style="height: 220px;">
+                                    <img src="{{item.image.url}}" class="w-100 mh-100 my-auto">
+                                </div>
+                                <br>
+                                <h4 class="text-center" style="color: black;">{{item.name}}</h4>
                             </div>
-                            <div class="card-footer">
-                                <h4 class="card-text text-center">{{item.name}}</h4>
-                            </div>
+                            
                         </div>
                     </a>
                 </div>

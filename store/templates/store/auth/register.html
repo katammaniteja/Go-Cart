@@ -12,35 +12,35 @@
                                 <h4>User Registration</h4>
                             </div>
                             <hr>
-                            <div class="form-group">
-                                <label for="">UserName: </label>
+                            <div class='mb-3'>
+                                <label class="form-label">UserName </label>
                                 {{form.username}}
                                 {% if form.errors.username %}
-                                <label for="" class="text-danger">{{form.errors.username}}</label>
+                                <label class="text-danger">{{form.errors.username}}</label>
                                 {% endif %}
                             </div>
-                            <div class="form-group">
-                                <label for="">Email: </label>
+                            <div class="mb-3">
+                                <label class="form-label">Email </label>
                                 {{form.email}}
                                 {% if form.errors.email %}
-                                <label for="" class="text-danger">{{form.errors.email}}</label>
+                                <label class="text-danger">{{form.errors.email}}</label>
                                 {% endif %}
                             </div>
-                            <div class="form-group">
-                                <label for="">Password: </label>
+                            <div class="mb-3">
+                                <label class="form-label">Password </label>
                                 {{form.password1}}
                                 {% if form.errors.password1 %}
-                                <label for="" class="text-danger">{{form.errors.password1}}</label>
+                                <label class="text-danger">{{form.errors.password1}}</label>
                                 {% endif %}
                             </div>
-                            <div class="form-group">
-                                <label for="">Confirm Password: </label>
+                            <div class="mb-3">
+                                <label class="form-label">Confirm Password </label>
                                 {{form.password2}}
                                 {% if form.errors.password2 %}
-                                <label for="" class="text-danger">{{form.errors.password2}}</label>
+                                <label class="text-danger">{{form.errors.password2}}</label>
                                 {% endif %}
                             </div>
-                            <button type="submit" class="btn float-right shadow btn-success px-4">Register</button>
+                            <button type="submit" class="btn float-start shadow btn-success px-4">Register</button>
                         </form>
                     </div>
                 </div>
