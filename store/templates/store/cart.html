@@ -3,22 +3,22 @@
 <div class="py-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-12">
                 <div class="card shadow-lg">
                     <div class="card-body" id="cartdata">
                         {% if cart %}
                         {% for item in cart %}
                         <div class="row product_data">
-                            <div class="col-md-2 my-auto">
+                            <div class="col-0 col-md-2 my-auto">
                                 <img src="{{item.product.product_image.url}}" class="mh-100" width="70px" alt="">
                             </div>
-                            <div class="col-md-3 my-auto">
+                            <div class="col-6 col-md-3 my-auto">
                                 <h6>{{item.product.name}}</h6>
                             </div>
-                            <div class="col-md-2 my-auto">
+                            <div class="col-6 col-md-2 my-auto">
                                 <h6>Rs {{item.product.selling_price| stringformat:'d'}}</h6>
                             </div>
-                            <div class="col-md-3 my-auto">
+                            <div class="col-6 col-md-3 my-auto">
                                 <input type="hidden" class="prod_id" value="{{item.product_id}}">
                                 {% csrf_token %}
                                 {% if item.product.quantity >= item.product_qty %}
@@ -32,10 +32,14 @@
                                 <h6>Out of stock</h6>
                                 {% endif %}
                             </div>
-                            <div class="col-md-2 my-auto">
+                            <div class="col-6 col-md-2 my-auto">
                                 <button class="btn btn-danger delete-cart-item"><i class="fa fa-trash"> Remove</i></button>
                             </div>
                         </div>
+                        {% if not forloop.last %}
+                        <hr>
+                        {% endif %}
+                        
                         {% endfor %}
                         {% else %}
                         <h4 class="text-center">Your cart is empty</h4>
