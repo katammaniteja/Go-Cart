@@ -36,11 +36,10 @@
                                 <button class="btn btn-danger delete-cart-item"><i class="fa fa-trash"> Remove</i></button>
                             </div>
                         </div>
-                        {% if not forloop.last %}
                         <hr>
-                        {% endif %}
                         
                         {% endfor %}
+                        <a href="{% url 'checkout' %}" class="btn btn-outline-success float-end">Checkout</a>
                         {% else %}
                         <h4 class="text-center">Your cart is empty</h4>
                         {% endif %}
