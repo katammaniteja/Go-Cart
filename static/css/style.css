@@ -17,11 +17,6 @@ a {
 .active{
   font-weight: 600;
 }
-/* @media screen and (max-width:770px){
-  .cart-prod-image{
-    display: none;
-  }
-} */
 .checkoutform label{
   font-size: 14px;
   font-weight: 600;

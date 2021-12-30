@@ -85,3 +85,12 @@ class Order(models.Model):
 
     def __str__(self):
         return '{} - {}'.format(self.id,self.tracking_no)
+
+class OrderItem(models.Model):
+    order=models.ForeignKey(Order, on_delete=models.CASCADE)
+    product=models.ForeignKey(Products, on_delete=models.CASCADE)
+    price=models.FloatField(null=False)
+    quantity=models.IntegerField(null=False)
+
+    def __str__(self):
+        return '{} {}'.format(self.order.id,self.order.tracking_no)
