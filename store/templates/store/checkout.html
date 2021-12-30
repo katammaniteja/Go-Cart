@@ -13,39 +13,39 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">First Name</label>
-                                <input name="fname" type="text" required class="form-control" placeholder="Enter first name">
+                                <input name="fname" type="text" value="{{ user.first_name }}" required class="form-control" placeholder="Enter first name">
                             </div>
                             <div class="col-md-6">
                                 <label for="">Last Name</label>
-                                <input name="lname" type="text" required class="form-control" placeholder="Enter first name">
+                                <input name="lname" type="text" value="{{ user.last_name }}" required class="form-control" placeholder="Enter first name">
                             </div>
                             <div class="col-md-6 mt-2">
                                 <label for="">Email</label>
-                                <input name="email" type="email" required class="form-control" placeholder="Enter email">
+                                <input name="email" type="email" value="{{ user.email }}" required class="form-control" placeholder="Enter email">
                             </div>
                             <div class="col-md-6 mt-2">
                                 <label for="">Phone</label>
-                                <input name="phone" type="text" required class="form-control" placeholder="Enter Phone">
+                                <input name="phone" type="text" value="{{ userprofile.phone }}" required class="form-control" placeholder="Enter Phone">
                             </div>
                             <div class="col-md-12 mt-2">
                                 <label for="">Address</label>
-                                <textarea name="address" type="text" required class="form-control" placeholder="Enter Address"></textarea>
+                                <textarea name="address" type="text" required class="form-control" placeholder="Enter Address">{{ userprofile.address }}</textarea>
                             </div>
                             <div class="col-md-6 mt-2">
                                 <label for="">City</label>
-                                <input name="city" type="text" required class="form-control" placeholder="Enter city">
+                                <input name="city" type="text" value="{{ userprofile.city }}" required class="form-control" placeholder="Enter city">
                             </div>
                             <div class="col-md-6 mt-2">
                                 <label for="">State</label>
-                                <input name="state" type="text" required class="form-control" placeholder="Enter state">
+                                <input name="state" type="text" value="{{ userprofile.state }}" required class="form-control" placeholder="Enter state">
                             </div>
                             <div class="col-md-6 mt-2">
                                 <label for="">Country</label>
-                                <input name="country" type="text" required class="form-control" placeholder="Enter country">
+                                <input name="country" type="text" value="{{ userprofile.country }}" required class="form-control" placeholder="Enter country">
                             </div>
                             <div class="col-md-6 mt-2">
                                 <label for="">Pin Code</label>
-                                <input name="pincode" type="text" required class="form-control" placeholder="Enter pin code">
+                                <input name="pincode" type="text" value="{{ userprofile.pincode }}" required class="form-control" placeholder="Enter pin code">
                             </div>
                         </div>
                     </div>
