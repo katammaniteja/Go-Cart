@@ -18,7 +18,6 @@ $(document).ready(function(){
             return false;
         }
         else{
-
             $.ajax({
                 method:"GET",
                 url:"/proceed-to-pay",
@@ -31,7 +30,6 @@ $(document).ready(function(){
                         "description": "Thanks for shopping",
                         "image": "https://example.com/your_logo",
                         "handler": function (response2){
-                            alert(response2.razorpay_payment_id);
                             data={
                                 "fname":fname,
                                 "lname":lname,
@@ -43,13 +41,19 @@ $(document).ready(function(){
                                 "pincode":pincode,
                                 "country":country,
                                 "payment_mode":"Razorpay",
-                                "payment_id":response2.razorpay_payment_id
+                                "payment_id":response2.razorpay_payment_id,
+                                csrfmiddlewaretoken: token,
                             }
                             $.ajax({
                                 method:"POST",
                                 url:"/place-order",
-                                csrfmiddlewaretoken: token,
                                 data:data,
+                                success:function(response3){
+                                    swal("Success", response3.status, "success")
+                                    .then(()=>{
+                                        window.location.href="/my-orders"
+                                    });
+                                }
                             });
                         },
                         "prefill": {
@@ -65,7 +69,6 @@ $(document).ready(function(){
                     rzp1.open();
                 }
             });
-            
         }
     })
 })

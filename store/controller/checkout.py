@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib import messages
 from store.models import Products,Cart,Order,OrderItem,Profile
 from django.contrib.auth.models import User
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponse
 import random
 
 def index(request):
@@ -51,7 +51,9 @@ def placeorder(request):
         neworder.state=request.POST.get('state')
         neworder.country=request.POST.get('country')
         neworder.pincode=request.POST.get('pincode')
+
         neworder.payment_mode=request.POST.get('payment_mode')
+        neworder.payment_id=request.POST.get('payment_id')
 
         cartitems=Cart.objects.filter(user=request.user)
         total_price=0
@@ -82,7 +84,12 @@ def placeorder(request):
 
         # To clear the users cart
         Cart.objects.filter(user=request.user).delete()
-        messages.success(request, "Your order has been placed successfully!")
+        
+
+        if(request.POST.get('payment_mode')=="Razorpay"):
+            return JsonResponse({"status":"Your order has been placed successfully!"});
+        else:
+            messages.success(request, "Your order has been placed successfully!")
 
     return redirect('/')
 
@@ -95,3 +102,5 @@ def razorpaycheck(request):
         'total_price':total_price
     })
     
+def orders(request):
+    return HttpResponse("myorders page")
