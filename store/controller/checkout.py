@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib import messages
 from store.models import Products,Cart,Order,OrderItem,Profile
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 import random
 
 def index(request):
@@ -84,3 +85,13 @@ def placeorder(request):
         messages.success(request, "Your order has been placed successfully!")
 
     return redirect('/')
+
+def razorpaycheck(request):
+    cartitems=Cart.objects.filter(user=request.user)
+    total_price=0
+    for item in cartitems:
+        total_price+=item.product.selling_price*item.product_qty
+    return JsonResponse({
+        'total_price':total_price
+    })
+    
