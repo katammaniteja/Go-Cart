@@ -2,15 +2,15 @@ $(document).ready(function(){
     $('.payWithRazorpay').click(function(e){
         e.preventDefault();
         
-        var fname=$("[name='fname']").val()
-        var lname=$("[name='lname']").val()
-        var email=$("[name='email']").val()
-        var phone=$("[name='phone']").val()
-        var address=$("[name='address']").val()
-        var city=$("[name='city']").val()
-        var state=$("[name='state']").val()
-        var pincode=$("[name='pincode']").val()
-        var country=$("[name='country']").val()
+        var fname=$("[name='fname']").val();
+        var lname=$("[name='lname']").val();
+        var email=$("[name='email']").val();
+        var phone=$("[name='phone']").val();
+        var address=$("[name='address']").val();
+        var city=$("[name='city']").val();
+        var state=$("[name='state']").val();
+        var pincode=$("[name='pincode']").val();
+        var country=$("[name='country']").val();
         var token = $('input[name=csrfmiddlewaretoken]').val();
 
         if(fname=="" ||lname=="" ||email=="" ||phone=="" ||address=="" ||city=="" ||state=="" ||pincode=="" ||country=="" ){
@@ -71,4 +71,4 @@ $(document).ready(function(){
             });
         }
     })
-})
+});
