@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.http import JsonResponse
 from store.models import Products,Cart
+from django.contrib.auth.decorators import login_required
 
 def addtocart(request):
     if request.method=='POST':
@@ -26,6 +27,7 @@ def addtocart(request):
             return JsonResponse({'status':"Login to continue",'tag':'warning'})
     return redirect('/')
 
+@login_required(login_url='loginpage')
 def viewcart(request):
     if request.user.is_authenticated:
         cart=Cart.objects.filter(user=request.user)
