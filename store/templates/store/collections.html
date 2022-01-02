@@ -1,6 +1,6 @@
 {% extends 'store/layouts/main.html' %}
 {% block content %}
-<div class="py-3 bg-primary bread_scrumb">
+<div class="py-3 bg-warning bread_scrumb">
     <div class="container">
         <a href="{% url 'home' %}" class="text-white">Home /</a>
         <a href="javascript:void(0)" class="text-white">Collections</a>
@@ -14,15 +14,14 @@
             <hr>
             <div class="row">
                 {% for item in category %}
-                <div class="col-md-3">
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
                     <a href="{% url 'collectionsview' item.slug %}">
                         <div class="card">
                             <div class="card-body">
-                                <div class="category-image" style="height: 220px;">
+                                <div class="category-image mb-2" style="height: 220px;">
                                     <img src="{{item.image.url}}" class="w-100 mh-100 my-auto">
                                 </div>
-                                <br>
-                                <h4 class="text-center" style="color: black;">{{item.name}}</h4>
+                                <h4 class="text-center text-dark">{{item.name}}</h4>
                             </div>
                         </div>
                     </a>
