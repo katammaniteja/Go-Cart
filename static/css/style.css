@@ -21,3 +21,7 @@ a {
 .checkoutform input{
   font-size: 14px;
 }
+.input-group{
+  max-width: 130px; 
+  min-width: 107px;
+}
