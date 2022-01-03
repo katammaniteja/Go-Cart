@@ -10,10 +10,15 @@ $(document).ready(function () {
 
     $(document).on('click', '.increment-btn', function (e) {
         e.preventDefault();
-
+        var max_value=$(this).closest('.product_data').find('.max_value').val();
         var value = $(this).closest('.product_data').find('.qty-input').val();
         value = parseInt(value);
-        if (value < 10) value++;
+        if (value < max_value){
+            value++;
+        } 
+        else{
+            alertify.notify(`Only ${max_value} quantity are available`);
+        }
         $(this).closest('.product_data').find('.qty-input').val(value);
     })
 
