@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    $(document).on('blur','.qty-input',function(e){
+        var max_value=$(this).closest('.product_data').find('.max_value').val();
+        var value = $(this).closest('.product_data').find('.qty-input').val();
+        $(this).closest('.product_data').find('.qty-input').val(Math.min(max_value,value))
+    })
     $(document).on('click', '.decrement-btn', function (e) {
         e.preventDefault();
 
