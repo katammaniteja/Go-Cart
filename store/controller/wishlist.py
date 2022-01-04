@@ -5,11 +5,15 @@ from django.http import JsonResponse
 from store.models import Wishlist,Products
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url='loginpage')
+
 def index(request):
-    wishlist=Wishlist.objects.filter(user=request.user)
-    context={'wishlist':wishlist}
-    return render(request, 'store\wishlist.html',context)
+    if request.user.is_authenticated:
+        wishlist=Wishlist.objects.filter(user=request.user)
+        context={'wishlist':wishlist}
+        return render(request, 'store\wishlist.html',context)
+    else:
+        messages.error(request,"Please login to view your wishlist")
+        return HttpResponseRedirect(reverse('loginpage'))
 
 def addtowishlist(request):
     if request.method=='POST':

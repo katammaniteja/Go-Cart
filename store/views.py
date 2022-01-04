@@ -8,7 +8,7 @@ def home(request):
     return render(request,'store/index.html');
 
 def collections(request):
-    category=Categories.objects.filter(status=0)
+    category=Categories.objects.filter(status=0).order_by('-created_at')
     context={'category':category}
     return render(request, 'store/collections.html',context)
 

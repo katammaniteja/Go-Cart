@@ -27,7 +27,6 @@ def addtocart(request):
             return JsonResponse({'status':"Login to continue",'tag':'warning'})
     return redirect('/')
 
-@login_required(login_url='loginpage')
 def viewcart(request):
     if request.user.is_authenticated:
         cart=Cart.objects.filter(user=request.user)
@@ -37,7 +36,7 @@ def viewcart(request):
         return render(request,"store/cart.html",context)
     else:
         messages.error(request,"Please login to view your cart")
-        return redirect('/')
+        return HttpResponseRedirect(reverse('loginpage'))
 
 def updatecart(request):
     if request.method=='POST':
@@ -48,7 +47,7 @@ def updatecart(request):
             cart.product_qty=prod_qty
             cart.save()
             return JsonResponse({'status':"Product Updated Successfully",'tag':'success'})
-    return redirect("/")
+    return redirect('/')
 
 def deletecartitem(request):
     if request.method=='POST':
