@@ -1,9 +1,13 @@
 $(document).ready(function () {
+
+    // On changing the quantity of item required in input filed
     $(document).on('blur','.qty-input',function(e){
         var max_value=$(this).closest('.product_data').find('.max_value').val();
         var value = $(this).closest('.product_data').find('.qty-input').val();
-        $(this).closest('.product_data').find('.qty-input').val(Math.min(max_value,value))
+        $(this).closest('.product_data').find('.qty-input').val(Math.min(max_value,value));
     })
+
+    // on decreasing the quatity of product required
     $(document).on('click', '.decrement-btn', function (e) {
         e.preventDefault();
 
@@ -13,6 +17,7 @@ $(document).ready(function () {
         $(this).closest('.product_data').find('.qty-input').val(value);
     })
 
+    // on increasing the quatity of product required
     $(document).on('click', '.increment-btn', function (e) {
         e.preventDefault();
         var max_value=$(this).closest('.product_data').find('.max_value').val();
@@ -25,8 +30,9 @@ $(document).ready(function () {
             alertify.notify(`Only ${max_value} quantity are available`);
         }
         $(this).closest('.product_data').find('.qty-input').val(value);
-    })
+    });
 
+    // Adding the product to the cart
     $(document).on('click', '.addtoCartBtn', function (e) {
         e.preventDefault();
         var prod_id = $(this).closest('.product_view').find('.prod_id').val();
@@ -57,6 +63,8 @@ $(document).ready(function () {
             }
         });
     });
+
+    // Updating the item quantity from cart to database
     $(document).on('click', '.changeQuantity', function (e) {
         e.preventDefault();
         var prod_id = $(this).closest('.product_data').find('.prod_id').val();
@@ -75,6 +83,8 @@ $(document).ready(function () {
             }
         });
     });
+
+    // Deleting the item in the cart
     $(document).on('click', '.delete-cart-item', function (e) {
         e.preventDefault();
         var prod_id = $(this).closest('.product_data').find('.prod_id').val();
@@ -92,6 +102,8 @@ $(document).ready(function () {
             }
         });
     });
+
+    // Adding items to our wishlist
     $(document).on('click', '.addtoWishlist', function (e) {
         e.preventDefault();
         var prod_id = $(this).closest('.product_view').find('.prod_id').val();
@@ -120,6 +132,8 @@ $(document).ready(function () {
             }
         });
     });
+
+    // Deleting the item from wishlist
     $(document).on('click', '.delete-wishlist-item', function (e) {
         e.preventDefault();
         var prod_id = $(this).closest('.product_data').find('.prod_id').val();
