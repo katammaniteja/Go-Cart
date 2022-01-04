@@ -4,7 +4,7 @@ $(document).ready(function () {
     $(document).on('blur','.qty-input',function(e){
         var max_value=$(this).closest('.product_data').find('.max_value').val();
         var value = $(this).closest('.product_data').find('.qty-input').val();
-        $(this).closest('.product_data').find('.qty-input').val(Math.min(max_value,value));
+        $(this).closest('.product_data').find('.qty-input').val(Math.min(max_value,Math.max(value,1)));
     })
 
     // on decreasing the quatity of product required
@@ -27,7 +27,7 @@ $(document).ready(function () {
             value++;
         } 
         else{
-            alertify.notify(`Only ${max_value} quantity are available`);
+            swal(`Only ${max_value} quantity are available`);
         }
         $(this).closest('.product_data').find('.qty-input').val(value);
     });
