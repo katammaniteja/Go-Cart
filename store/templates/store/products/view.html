@@ -16,7 +16,7 @@
                 <div class="card shadow product_data">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4 my-auto">
                                 {% if products.tag %}
                                 <label class="tag badge bg-danger">{{ products.tag }}</label>
                                 {% endif %}
@@ -68,6 +68,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% if products.description %}
                         <div class="col-md-12">
                             <hr>
                             <h3>Description</h3>
@@ -75,6 +76,7 @@
                                 {{ products.description| linebreaks }}
                             </p>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

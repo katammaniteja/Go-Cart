@@ -33,7 +33,7 @@ class Products(models.Model):
     product_image=models.ImageField(upload_to=get_file_path,blank=True,null=True)
     small_description=models.TextField(max_length=700,null=False,blank=False)
     quantity=models.IntegerField(null=False,blank=False)
-    description=models.TextField(null=False,blank=False)
+    description=models.TextField(null=True,blank=True)
     original_price=models.FloatField(null=False,blank=False)
     selling_price=models.FloatField(null=False,blank=False)
     status=models.BooleanField(default=False,help_text="0=default, 1=Hidden")
