@@ -14,7 +14,7 @@ def collections(request):
 
 def collectionsView(request,slug):
     if Categories.objects.filter(slug=slug,status=0):
-        products=Products.objects.filter(category__slug=slug)
+        products=Products.objects.filter(category__slug=slug).order_by('-created_at')
         category=Categories.objects.filter(slug=slug).first()
         context={"products":products,"category":category};
         return render(request, 'store/products/index.html',context)
