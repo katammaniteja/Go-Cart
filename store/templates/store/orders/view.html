@@ -6,7 +6,7 @@
                 <div class="card shadow">
                     <div class="card-header">
                         <h3 class="mb-0">Order View
-                            <a href="{% url 'myorders' %}" class="btn btn-warning float-end text-white"><i class="fa fa-reply"></i> Back</a>
+                            <a href="{% url 'myorders' %}" class="btn btn-info float-end text-white"><i class="fa fa-reply"></i> Back</a>
                         </h3>
                     </div>
                     <div class="card-body">
@@ -27,7 +27,7 @@
                                     {{order.address}} ,
                                     {{order.city}} ,
                                     {{order.state}} ,
-                                    {{order.country}} ,
+                                    {{order.country}}.
                                 </div>
                                 <label class="mt-2" for="">Pincode</label>
                                 <div class="border p-1">{{order.pincode}}</div>
@@ -58,7 +58,7 @@
                                         {% endfor %}
                                     </tbody>
                                 </table>
-                                <h4>Grand Total: <span class="float-end">Rs {{order.total_price| stringformat:'d'}}</span></h4>
+                                <h4>Grand Total: <span class="float-end">Rs {{order.total_price}}</span></h4>
 
                                 <h6 class="border p-2">Payment Mode: {{order.payment_mode}}</h6>
                                 <h6 class="border p-2">Order Status: {{order.status}}</h6>
