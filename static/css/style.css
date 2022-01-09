@@ -25,3 +25,8 @@ a {
   max-width: 130px; 
   min-width: 107px;
 }
+.whatsapp_chat{
+  position: fixed;
+  left: 01%;
+  bottom: 05%;
+}
