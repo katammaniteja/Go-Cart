@@ -58,14 +58,14 @@ class Order(models.Model):
     pincode=models.CharField(max_length=150,null=False)
     total_price=models.FloatField(null=False)
     payment_mode=models.CharField(max_length=150,null=False)
-    payment_id=models.CharField(max_length=250,null=True)
+    payment_id=models.CharField(max_length=250,null=True,blank=True)
     orderstatuses=(
         ("Pending","Pending"),
         ("Out for shipping","Out for shipping"),
         ("Delivered","Delivered")
     )
     status=models.CharField(max_length=150,choices=orderstatuses,default="Pending")
-    message=models.TextField(null=True)
+    message=models.TextField(null=True,blank=True)
     tracking_no=models.CharField(max_length=150,null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
