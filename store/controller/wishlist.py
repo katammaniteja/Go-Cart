@@ -22,7 +22,7 @@ def addtowishlist(request):
             product_check=Products.objects.get(id=prod_id)
             if(product_check):
                 if(Wishlist.objects.filter(user=request.user,product_id=prod_id)):
-                    return JsonResponse({"status":"Product already in the wishlist","tag":"success"})
+                    return JsonResponse({"status":"Product already in the wishlist","tag":"notify"})
                 else:
                     Wishlist.objects.create(user=request.user,product_id=prod_id)
                     return JsonResponse({'status':'Product added to the wishlist','tag':'success'})
