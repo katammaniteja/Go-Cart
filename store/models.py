@@ -5,9 +5,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 def get_file_path(request,filename):
-    original_filename=filename
-    nowtime=datetime.datetime.now().strftime('%Y%m%H:%M:%S')
-    filename="%s%s" % (nowtime,original_filename)
     return os.path.join('uploads/',filename)
 
 class Categories(models.Model):
