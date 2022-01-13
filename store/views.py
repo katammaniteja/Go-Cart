@@ -36,19 +36,24 @@ def productView(request,cate_slug,pro_slug):
         messages.error(request,"No such category found");
         return HttpResponseRedirect(reverse('home'))
 
-def productListAjax(request):
+def TotalListAjax(request):
     products=Products.objects.filter(status=0).values_list('name',flat=True)
+    categories=Categories.objects.filter(status=0).values_list('name',flat=True)
     products_list=list(products)
-    return JsonResponse(products_list,safe=False)
+    categories_list=list(categories)
+    return JsonResponse(products_list+categories_list,safe=False)
 
-def searchproducts(request):
+def searched(request):
+    print("Hello")
     if request.method=='POST':
-        searched_product=request.POST.get('searched_product')
-        product=Products.objects.filter(name=searched_product).first()
+        searched_item=request.POST.get('searched_item')
+        product=Products.objects.filter(name=searched_item).first()
+        category=Categories.objects.filter(name=searched_item).first()
         if product:
             return redirect('collections/'+product.category.slug+'/'+product.slug)
+        elif category:
+            return redirect('collections/'+category.slug)
         else:
-            messages.error(request,"No products found")
+            messages.error(request,"No such product found")
             return redirect(request.META.get("HTTP_REFERER"))
-
     return redirect(request.META.get("HTTP_REFERER"))

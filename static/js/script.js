@@ -4,14 +4,15 @@ $(document).ready(function () {
         var availableTags = [];
         $.ajax({
             method:"GET",
-            url:"/product_list",
+            url:"/items_list",
             success:function(response){
+                console.log(response)
               availableTags=response;
               startAutoComplete(availableTags);
             }
         });
         function startAutoComplete(availableTags){
-          $( "#search_products" ).autocomplete({
+          $( "#search_item" ).autocomplete({
             source: availableTags
           });
         }

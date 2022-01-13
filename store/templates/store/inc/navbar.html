@@ -8,10 +8,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <!-- Search -->
       <div class="search_bar">
-        <form action="{% url 'searchproducts' %}" method='post'>
+        <form action="{% url 'searched' %}" method='post'>
           {% csrf_token %}
           <div class="input-group">
-            <input type="text" class="form-control" name="searched_product" id="search_products" required placeholder="Search Products">
+            <input type="text" class="form-control" name="searched_item" id="search_item" required placeholder="Search Products">
             <button type="submit" class="input-group-text"><i class="fa fa-search"></i></button>
           </div>
         </form>

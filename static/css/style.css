@@ -28,7 +28,11 @@ a {
 .search_bar{
   width: 40%;
   min-width: 350px;
-  margin-left: 10%;
+  margin-left: 13%;
+}
+.search_bar input{
+  box-shadow: none!important;
+  border:1px solid #ccc !important;
 }
 @media screen and (max-width:992px) {
   .search_bar{
