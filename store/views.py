@@ -47,6 +47,8 @@ def searched(request):
     print("Hello")
     if request.method=='POST':
         searched_item=request.POST.get('searched_item')
+        if searched_item=="":
+            return redirect(request.META.get("HTTP_REFERER"))
         product=Products.objects.filter(name=searched_item).first()
         category=Categories.objects.filter(name=searched_item).first()
         if product:

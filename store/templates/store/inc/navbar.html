@@ -11,8 +11,8 @@
         <form action="{% url 'searched' %}" method='post'>
           {% csrf_token %}
           <div class="input-group">
-            <input type="text" class="form-control" name="searched_item" id="search_item" required placeholder="Search Products">
-            <button type="submit" class="input-group-text"><i class="fa fa-search"></i></button>
+            <input type="text" class="form-control" name="searched_item" id="search_item" placeholder="Search Products">
+            <button type="submit" class="input-group-text bg-warning"><i class="fa fa-search"></i></button>
           </div>
         </form>
       </div>
