@@ -21,7 +21,18 @@ a {
 .checkoutform input{
   font-size: 14px;
 }
-.input-group{
+.product_data .input-group {
   max-width: 130px; 
   min-width: 107px;
+}
+.search_bar{
+  width: 40%;
+  min-width: 350px;
+  margin-left: 10%;
+}
+@media screen and (max-width:992px) {
+  .search_bar{
+    margin:auto;
+    margin-top: 10px;
+  }
 }

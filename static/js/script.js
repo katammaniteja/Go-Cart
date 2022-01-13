@@ -1,4 +1,21 @@
 $(document).ready(function () {
+    // Search Products
+    $( function() {
+        var availableTags = [];
+        $.ajax({
+            method:"GET",
+            url:"/product_list",
+            success:function(response){
+              availableTags=response;
+              startAutoComplete(availableTags);
+            }
+        });
+        function startAutoComplete(availableTags){
+          $( "#search_products" ).autocomplete({
+            source: availableTags
+          });
+        }
+    } );
 
     // On changing the quantity of item required in input filed
     $(document).on('blur','.qty-input',function(e){
@@ -43,7 +60,7 @@ $(document).ready(function () {
             url: "/add-to-cart",
             data: {
                 'product_id': prod_id,
-                'product_qty': prod_qty,
+                'product_qty': prod_qty, 
                 csrfmiddlewaretoken: token,
             },
             success: function (response) {

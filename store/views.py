@@ -1,7 +1,8 @@
-from django.shortcuts import render,HttpResponseRedirect
+from django.shortcuts import render,HttpResponseRedirect,redirect
 from .models import Categories,Products
 from django.urls import reverse
 from django.contrib import messages
+from django.http import JsonResponse
 
 # Create your views here.
 def home(request):
@@ -34,3 +35,20 @@ def productView(request,cate_slug,pro_slug):
     else:
         messages.error(request,"No such category found");
         return HttpResponseRedirect(reverse('home'))
+
+def productListAjax(request):
+    products=Products.objects.filter(status=0).values_list('name',flat=True)
+    products_list=list(products)
+    return JsonResponse(products_list,safe=False)
+
+def searchproducts(request):
+    if request.method=='POST':
+        searched_product=request.POST.get('searched_product')
+        product=Products.objects.filter(name=searched_product).first()
+        if product:
+            return redirect('collections/'+product.category.slug+'/'+product.slug)
+        else:
+            messages.error(request,"No products found")
+            return redirect(request.META.get("HTTP_REFERER"))
+
+    return redirect(request.META.get("HTTP_REFERER"))

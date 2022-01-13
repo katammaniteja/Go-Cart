@@ -4,7 +4,19 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Search -->
+      <div class="search_bar">
+        <form action="{% url 'searchproducts' %}" method='post'>
+          {% csrf_token %}
+          <div class="input-group">
+            <input type="text" class="form-control" name="searched_product" id="search_products" required placeholder="Search Products">
+            <button type="submit" class="input-group-text"><i class="fa fa-search"></i></button>
+          </div>
+        </form>
+      </div>
+
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a>
