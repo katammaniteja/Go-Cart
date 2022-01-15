@@ -44,7 +44,6 @@ def TotalListAjax(request):
     return JsonResponse(products_list+categories_list,safe=False)
 
 def searched(request):
-    print("Hello")
     if request.method=='POST':
         searched_item=request.POST.get('searched_item')
         if searched_item=="":

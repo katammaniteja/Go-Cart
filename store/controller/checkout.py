@@ -61,9 +61,9 @@ def placeorder(request):
             total_price+=item.product.selling_price*item.product_qty
         
         neworder.total_price=total_price
-        trackno='mani'+str(random.randint(111111111, 999999999))
+        trackno=str(random.randint(111111111, 999999999))
         while Order.objects.filter(tracking_no=trackno) is None:
-            trackno='mani'+str(random.randint(111111111, 999999999))
+            trackno=str(random.randint(111111111, 999999999))
         neworder.tracking_no=trackno
         neworder.save()
 
@@ -101,6 +101,3 @@ def razorpaycheck(request):
     return JsonResponse({
         'total_price':total_price
     })
-    
-def orders(request):
-    return HttpResponse("myorders page")

@@ -40,9 +40,9 @@ def deletewishitem(request):
             if(Wishlist.objects.filter(user=request.user,product_id=prod_id)):
                 wishlistitem=Wishlist.objects.filter(user=request.user,product_id=prod_id)
                 wishlistitem.delete()
-                return JsonResponse({"status":"product removed from wishlist","tag":"success"})
+                return JsonResponse({"status":"Product removed from wishlist","tag":"success"})
             else:
-                return JsonResponse({'status':'product not found in wishlist','tag':'error'})
+                return JsonResponse({'status':'Product not found in wishlist','tag':'error'})
         else:
             return JsonResponse({'status':"login to continue",'tag':'warning'})
     return redirect('/')

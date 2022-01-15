@@ -61,7 +61,7 @@
                                     {% endfor %}
                                 </tbody>
                             </table>
-                            <h4>Grand Total: <span class="float-end">Rs {{order.total_price}}</span></h4>
+                            <h4>Grand Total: <span class="float-end">&#8377 {{order.total_price| stringformat:'d'}}</span></h4>
 
                             <h6 class="border p-2">Payment Mode: {{order.payment_mode}}</h6>
                             <h6 class="border p-2">Order Status: {{order.status}}</h6>
