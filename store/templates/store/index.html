@@ -1,5 +1,59 @@
 {% extends 'store/layouts/main.html' %}
 {% block content %}
 {% include 'store/inc/slider.html' %}
-<h1>Hello World</h1>
-{% endblock content %}
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Trending Products</h3>
+                <hr>
+                <div class="row owl-carousel owl-theme">
+                    {% for item in trending_products %}
+                    <div class="item">
+                        <div class="card">
+                            <div class="card-body" >
+                                <a href="{% url 'productView' item.category.slug item.slug %}" class="text-dark">
+                                    <div class="mb-2" style="height: 200px;">
+                                        <img src="{{item.product_image.url}}" class="w-100 h-100">
+                                    </div>
+                                    <h5 class="text-center">{{item.name}}</h5>
+                                </a>
+                                <h5 class="text-center">&#8377 {{item.selling_price|stringformat:'d'}}</h5>
+                                <span>
+                                    {% if item.quantity %}
+                                        <button type="button" class="btn btn-primary btn-sm me-2 mb-2 float-start shadow addtoCartBtn">Add to Cart <i class="fa fa-shopping-cart"></i></button>
+                                    {% else %}
+                                        <button type="button" class="btn btn-danger btn-sm me-2 mb-2 float-start shadow">Out of Stock</button>
+                                    {% endif %}
+                                </span>
+                            </div> 
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %} 
+
+{% block scripts %}
+<script>
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        dots:false,
+        nav:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:4
+            }
+        }
+    })
+</script>
+{% endblock scripts %}

@@ -6,7 +6,9 @@ from django.http import JsonResponse
 
 # Create your views here.
 def home(request):
-    return render(request,'store/index.html');
+    trending_products=Products.objects.filter(trending=1)
+    context={'trending_products':trending_products}
+    return render(request,'store/index.html',context);
 
 def collections(request):
     category=Categories.objects.filter(status=0).order_by('-created_at')
