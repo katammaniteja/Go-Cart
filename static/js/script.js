@@ -124,7 +124,7 @@ $(document).ready(function () {
     // Adding items to our wishlist
     $(document).on('click', '.addtoWishlist', function (e) {
         e.preventDefault();
-        var prod_id = $(this).closest('.product_view').find('.prod_id').val();
+        var prod_id = $(this).closest('.product_data').find('.prod_id').val();
         var token = $('input[name=csrfmiddlewaretoken]').val();
         $.ajax({
             method: "POST",
