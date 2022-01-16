@@ -53,8 +53,8 @@ $(document).ready(function () {
     // Adding the product to the cart
     $(document).on('click', '.addtoCartBtn', function (e) {
         e.preventDefault();
-        var prod_id = $(this).closest('.product_view').find('.prod_id').val();
-        var prod_qty = $(this).closest('.product_view').find('.qty-input').val();
+        var prod_id = $(this).closest('.product_data').find('.prod_id').val();
+        var prod_qty = $(this).closest('.product_data').find('.qty-input').val();
         var token = $('input[name=csrfmiddlewaretoken]').val();
         $.ajax({
             method: "POST",

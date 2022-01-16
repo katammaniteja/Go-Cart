@@ -3,13 +3,13 @@
 {% include 'store/inc/slider.html' %}
 
     <div class="container my-5">
-        <div class="row">
+        <div class="row ">
             <div class="col-md-12">
                 <h3>Trending Products</h3>
                 <hr>
                 <div class="row owl-carousel owl-theme">
                     {% for item in trending_products %}
-                    <div class="item">
+                    <div class="item product_data">
                         <div class="card">
                             <div class="card-body" >
                                 <a href="{% url 'productView' item.category.slug item.slug %}" class="text-dark">
@@ -17,15 +17,32 @@
                                         <img src="{{item.product_image.url}}" class="w-100 h-100">
                                     </div>
                                     <h5 class="text-center">{{item.name}}</h5>
+                                    <h5 class="text-center">&#8377 {{item.selling_price|stringformat:'d'}}</h5>
                                 </a>
-                                <h5 class="text-center">&#8377 {{item.selling_price|stringformat:'d'}}</h5>
-                                <span>
-                                    {% if item.quantity %}
-                                        <button type="button" class="btn btn-primary btn-sm me-2 mb-2 float-start shadow addtoCartBtn">Add to Cart <i class="fa fa-shopping-cart"></i></button>
-                                    {% else %}
-                                        <button type="button" class="btn btn-danger btn-sm me-2 mb-2 float-start shadow">Out of Stock</button>
-                                    {% endif %}
-                                </span>
+                                <div class="row mt-2">
+                                    <div class="col-md-6">
+                                        <!--------------------------- For ajax -------------------------->
+                                        {% csrf_token %}
+                                        <input type="hidden" value="{{item.quantity}}" class="max_value">
+                                        <input type="hidden" value="{{item.id}}" class="prod_id">
+                                        <!---------------------------------------------------------------->
+                                        <div class="input-group text-center mb-3">
+                                            <button class="input-group-text decrement-btn">-</button>
+                                            <input type="text" name="quantity" class="form-control qty-input text-center" value="1">
+                                            <button class="input-group-text increment-btn">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mt-1">
+                                        <span>
+                                            {% if item.quantity %}
+                                                <button type="button" class="btn btn-primary btn-sm me-2 mb-2 float-start shadow addtoCartBtn">Add to Cart <i class="fa fa-shopping-cart"></i></button>
+                                            {% else %}
+                                                <button type="button" class="btn btn-danger btn-sm me-2 mb-2 float-start shadow">Out of Stock</button>
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                </div>
+                                
                             </div> 
                         </div>
                     </div>
