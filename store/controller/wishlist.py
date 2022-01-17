@@ -5,7 +5,6 @@ from django.http import JsonResponse
 from store.models import Wishlist,Products
 from django.contrib.auth.decorators import login_required
 
-
 def index(request):
     if request.user.is_authenticated:
         wishlist=Wishlist.objects.filter(user=request.user)
