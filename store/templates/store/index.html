@@ -2,7 +2,7 @@
 {% block content %}
 {% include 'store/inc/slider.html' %}
 
-    <div class="container my-5">
+    <div class="container mt-5">
         <div class="row ">
             <div class="col-md-12">
                 <h3>Trending Products</h3>
@@ -37,7 +37,7 @@
                                             {% if item.quantity %}
                                                 <button type="button" class="btn btn-primary btn-sm me-2 mb-2 float-start shadow addtoCartBtn">Add to Cart <i class="fa fa-shopping-cart"></i></button>
                                             {% else %}
-                                                <button type="button" class="btn btn-danger btn-sm me-2 mb-2 float-start shadow">Out of Stock</button>
+                                                <button type="button" class="btn btn-danger btn-sm me-2 mb-2 float-start shadow" disabled>Out of Stock</button>
                                             {% endif %}
                                         </span>
                                     </div>
@@ -45,6 +45,31 @@
                                 
                             </div> 
                         </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-3">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Collections</h3>
+                <hr>
+                <div class="row owl-carousel owl-theme">
+                    {% for item in category %}
+                    <div class="item">
+                        <a href="{% url 'collectionsview' item.slug %}">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="mb-2" style="height: 200px;">
+                                        <img src="{{item.image.url}}" class="w-100 h-100">
+                                    </div>
+                                    <h4 class="text-center text-dark">{{item.name}}</h4>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                     {% endfor %}
                 </div>
