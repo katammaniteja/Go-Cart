@@ -27,7 +27,6 @@ def addtowishlist(request):
                     return JsonResponse({'status':'Product added to the wishlist','tag':'success'})
             else:
                 return JsonResponse({"status":"No such product found",'tag':'error'})
-
         else:
             return JsonResponse({'status':"Login to continue",'tag':'warning'})
     return redirect('/')
