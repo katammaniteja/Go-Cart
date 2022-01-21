@@ -27,7 +27,7 @@ a {
 }
 .search_bar{
   width: 40%;
-  min-width: 340px;
+  min-width: 320px;
   margin-left: 13%;
 }
 .search_bar input{
