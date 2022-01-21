@@ -9,7 +9,7 @@ def index(request):
     if request.user.is_authenticated:
         wishlist=Wishlist.objects.filter(user=request.user)
         context={'wishlist':wishlist}
-        return render(request, 'store\wishlist.html',context)
+        return render(request, 'store/wishlist.html',context)
     else:
         messages.error(request,"Please login to view your wishlist")
         return HttpResponseRedirect(reverse('loginpage'))
