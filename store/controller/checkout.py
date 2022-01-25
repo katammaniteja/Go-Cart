@@ -30,7 +30,9 @@ def placeorder(request):
         currentuser.last_name=request.POST.get('lname')
         currentuser.save()
         
-        userprofile=Profile.objects.filter(user=request.user).first()
+        userprofile=Profile()
+        if Profile.objects.filter(user=request.user).first():
+            userprofile=Profile.objects.filter(user=request.user).first()
         userprofile.user=request.user
         userprofile.phone=request.POST.get('phone')
         userprofile.address=request.POST.get('address')
