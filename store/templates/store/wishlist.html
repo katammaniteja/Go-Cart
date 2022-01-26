@@ -12,38 +12,35 @@
                         <h3 class="mb-0 text-center">My Wishlist</h3>
                     </div>
                     <div class="card-body" id="whislistdata">
-                        {% if wishlist %}
-                        {% for item in wishlist %}
-                            <div class="row product_data align-items-center">
-                                <div class="col-3 col-md-2 ">
-                                    <img src="{{item.product.product_image.url}}" class="mh-100 cart-prod-image" width="70px">
-                                </div>
-                                <div class="col-6 col-md-3 ">
-                                    <h6>{{item.product.name}}</h6>
-                                </div>
-                                <div class="col-3 col-md-2">
-                                    <h6>&#8377 {{item.product.selling_price| stringformat:'d'}}</h6>
-                                </div>
-                                <div class="col-6 col-md-3">
-                                    <!-------------------------------------------------------- Ajax --------------------------------------------------->
-                                    <input type="hidden" class="prod_id" value="{{item.product_id}}">
-                                    {% csrf_token %}
-                                    <!----------------------------------------------------------------------------------------------------------------->
-                                    <a href="{% url 'productView' item.product.category.slug item.product.slug %}" class="btn btn-primary">
-                                        View Item</a>
-                                </div>
-                                <div class="col-6 col-md-2">
-                                    <button class="btn btn-danger delete-wishlist-item">Remove</button>
-                                </div>
-                            </div>
-                            {% if not forloop.last %}
-                            <hr>
-                            {% endif %}
-                        {% endfor %}
+                    {% if wishlist %}
+                        <div class="table-responsive">
+                            <table class="table align-middle ">
+                                <tbody>
+                                    {% for item in wishlist %}
+                                    <tr class="product_data">
+                                        <td class="text-nowrap"><img src="{{item.product.product_image.url}}" class="mh-100" width="70px" alt=""></td>
+                                        <td class="text-nowrap"><h6>{{item.product.name}}</h6></td>
+                                        <td class="text-nowrap">&#8377 {{item.product.selling_price| stringformat:'d'}}</td>
+                                        <td class="text-nowrap">
+                                            <!-------------------------------------------------------- Ajax --------------------------------------------------->
+                                            <input type="hidden" class="prod_id" value="{{item.product_id}}">
+                                            {% csrf_token %}
+                                            <!----------------------------------------------------------------------------------------------------------------->
+                                            <a href="{% url 'productView' item.product.category.slug item.product.slug %}" class="btn btn-primary">
+                                                View Item</a>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <button class="btn btn-danger delete-wishlist-item">Remove</button>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                         {% else %}
                         <h4 class="text-center">Your wishlist is empty</h4>
                         {% endif %}
-                    <div>
+                        </div>
                 </div>
             </div>
         </div>
