@@ -11,7 +11,7 @@
             <div class="col-md-7 ">
                 <div class="card shadow checkoutform">
                     <div class="card-body">
-                        <h6>Basic Details</h6>
+                        <h5>Basic Details</h5>
                         <hr>
                         <div class="row">
                             <div class="col-md-6">
@@ -57,10 +57,10 @@
             <div class="col-md-5">
                 <div class="card shadow">
                     <div class="card-body">
-                        <h6>Order Summary</h6>
+                        <h5>Order Summary</h5>
                         <hr>
                         {% if cartitems %}
-                            <table class="table table-stripeds table-bordereds align-middle">
+                            <table class="table align-middle">
                                 <thead>
                                     <tr>
                                         <th>Product</th>
@@ -76,7 +76,7 @@
                                                 {{item.product.name}}
                                             </td>
                                             <td>{{item.product_qty}}</td>
-                                            <td>{{item.product.selling_price| stringformat:'d'}}</td>
+                                            <td class="text-nowrap">&#8377 {{item.product.selling_price| stringformat:'d'}}</td>
                                         </tr>
                                     {% endfor %}
                                 </tbody>
