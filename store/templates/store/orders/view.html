@@ -53,7 +53,7 @@
                                     <tr>
                                         <td>{{ item.product.name }}</td>
                                         <td>{{ item.quantity }}</td>
-                                        <td>{{ item.price }}</td>
+                                        <td class="text-nowrap">&#8377 {{ item.price| stringformat:'d' }}</td>
                                         <td>
                                             <img src="{{item.product.product_image.url}}" height="50px" width="50px" alt="">
                                         </td>
