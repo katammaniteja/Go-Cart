@@ -26,11 +26,10 @@
                                         <input type="hidden" class="prod_id" value="{{item.product_id}}">
                                         {% csrf_token %}
                                         <!----------------------------------------------------------------------------------------------------------------->
-                                        <a href="{% url 'productView' item.product.category.slug item.product.slug %}" class="btn btn-primary">
-                                            View Item</a>
+                                        <a href="{% url 'productView' item.product.category.slug item.product.slug %}" class="btn btn-primary"><i class="fa fa-eye"></i> View Item</a>
                                     </td>
                                     <td class="text-nowrap">
-                                        <button class="btn btn-danger delete-wishlist-item">Remove</button>
+                                        <button class="btn btn-danger delete-wishlist-item"><i class="fa fa-trash"></i> Remove</button>
                                     </td>
                                 </tr>
                                 {% endfor %}
