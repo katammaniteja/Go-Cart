@@ -43,6 +43,9 @@ $(document).ready(function () {
         value = parseInt(value);
         if (value < max_value){
             value++;
+        }
+        else if(max_value==0){
+            swal("Out of stock");
         } 
         else{
             swal(`Only ${max_value} quantity are available`);
