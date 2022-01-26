@@ -46,7 +46,7 @@
                                     <h5 class="text-center">&#8377 {{item.selling_price|stringformat:'d'}}</h5>
                                 </a>
                                 <div class="row mt-2">
-                                    <div class="col-md-6">
+                                    <div class="col-6">
                                         <!--------------------------- For ajax -------------------------->
                                         {% csrf_token %}
                                         <input type="hidden" value="{{item.quantity}}" class="max_value">
@@ -58,7 +58,7 @@
                                             <button class="input-group-text increment-btn">+</button>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mt-1">
+                                    <div class="col-6 mt-1">
                                         <span>
                                             {% if item.quantity %}
                                                 <button type="button" class="btn btn-primary btn-sm me-2 mb-2 float-start shadow addtoCartBtn">Add to Cart <i class="fa fa-shopping-cart"></i></button>
