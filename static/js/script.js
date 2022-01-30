@@ -79,7 +79,7 @@ $(document).ready(function () {
                     alertify.error(response.status);
                 }
                 else {
-                    alertify.notify(response.status)
+                    alertify.notify(response.status);
                 }
             }
         });
@@ -119,7 +119,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 alertify.notify(response.status);
-                $('#cartdata').load(location.href + " #cartdata")
+                $('#cartdata').load(location.href + " #cartdata");
             }
         });
     });
@@ -148,7 +148,7 @@ $(document).ready(function () {
                     alertify.error(response.status);
                 }
                 else {
-                    alertify.notify(response.status)
+                    alertify.notify(response.status);
                 }
             }
         });
@@ -168,7 +168,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 alertify.notify(response.status);
-                $('#whislistdata').load(location.href + " #whislistdata")
+                $('#whislistdata').load(location.href + " #whislistdata");
             }
         });
     });
