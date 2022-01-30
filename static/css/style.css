@@ -30,7 +30,7 @@ a {
   min-width: 320px;
   margin-left: 13%;
 }
-.search_bar input{
+.input-group input,.search_bar input{
   box-shadow: none!important;
   border:1px solid #ccc !important;
 }

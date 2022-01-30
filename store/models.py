@@ -35,7 +35,7 @@ class Products(models.Model):
         return self.name
 
 class Cart(models.Model):
-    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    user=models.ForeignKey(User, on_delete=models.CASCADE,related_name='user_cart')
     product=models.ForeignKey(Products, on_delete=models.CASCADE)
     product_qty=models.IntegerField(null=False,blank=False)
     created_at=models.DateTimeField(auto_now_add=True)
