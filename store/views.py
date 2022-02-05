@@ -12,13 +12,13 @@ def home(request):
     return render(request,'store/index.html',context);
 
 def collections(request):
-    category=Categories.objects.filter(status=0).order_by('-created_at')
+    category=Categories.objects.filter(status=0)
     context={'category':category}
     return render(request, 'store/collections.html',context)
 
 def collectionsView(request,slug):
     if Categories.objects.filter(slug=slug,status=0):
-        products=Products.objects.filter(category__slug=slug).order_by('-created_at')
+        products=Products.objects.filter(category__slug=slug)
         category=Categories.objects.filter(slug=slug).first()
         context={"products":products,"category":category};
         return render(request, 'store/products/index.html',context)

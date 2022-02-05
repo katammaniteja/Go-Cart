@@ -6,7 +6,7 @@ from store.models import Order,OrderItem
 from django.contrib.auth.decorators import login_required
 
 def index(request):
-    orders=Order.objects.filter(user=request.user).order_by('-created_at')
+    orders=Order.objects.filter(user=request.user)
     context={"orders":orders}
     return render(request,'store/orders/index.html',context)
 
