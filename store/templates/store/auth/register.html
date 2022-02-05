@@ -15,7 +15,7 @@
                                 <h4>User Registration</h4>
                             </div>
                             <hr>
-                            <div class='mb-3'>
+                            <div class='mb-3'> 
                                 <label class="form-label">UserName </label>
                                 {{form.username}}
                                 {% if form.errors.username %}
@@ -43,7 +43,15 @@
                                 <label class="text-danger">{{form.errors.password2}}</label>
                                 {% endif %}
                             </div>
-                            <button type="submit" class="btn float-start shadow btn-success px-4">Register</button>
+                            <div class="d-flex justify-content-between flex-wrap-reverse">
+                                <div>
+                                    Already have an account? <a href="{% url 'loginpage' %}">Login here</a>
+                                </div>
+                                <div class="mb-2">
+                                    <button type="submit" class="btn float-start shadow btn-success px-4">Register</button>
+                                </div>
+                            </div>
+                            
                         </form>
                     </div>
                 </div>
