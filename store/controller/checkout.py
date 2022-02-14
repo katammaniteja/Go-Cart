@@ -7,6 +7,9 @@ from django.http import JsonResponse,HttpResponse
 import random
 
 def index(request):
+    if not request.user.is_authenticated:
+        messages.error(request,"Please login to continue")
+        return HttpResponseRedirect(reverse('home'))
     rawcart=Cart.objects.filter(user=request.user)
     for item in rawcart:
         if item.product_qty>item.product.quantity:
@@ -17,10 +20,8 @@ def index(request):
         total_price+=item.product.selling_price*item.product_qty
 
     userprofile=Profile.objects.filter(user=request.user).first()
-
     context={'cartitems':cartitems,'total_price':total_price,'userprofile':userprofile}
     return render(request,'store/checkout.html',context)
-
 
 def placeorder(request):
     if request.method=='POST':
@@ -31,7 +32,7 @@ def placeorder(request):
         currentuser.save()
         
         userprofile=Profile()
-        if Profile.objects.filter(user=request.user).first():
+        if Profile.objects.filter(user=request.user).exists():
             userprofile=Profile.objects.filter(user=request.user).first()
         userprofile.user=request.user
         userprofile.phone=request.POST.get('phone')
@@ -85,7 +86,6 @@ def placeorder(request):
 
         # To clear the users cart
         Cart.objects.filter(user=request.user).delete()
-        
 
         if(request.POST.get('payment_mode')=="Razorpay"):
             return JsonResponse({"status":"Your order has been placed successfully!"});

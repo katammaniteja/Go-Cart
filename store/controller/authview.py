@@ -1,6 +1,5 @@
-from django.shortcuts import render,HttpResponseRedirect,redirect
+from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
-from django.urls import reverse
 from store.forms import RegisterForm
 from django.contrib import messages
 
@@ -23,7 +22,6 @@ def loginpage(request):
         if request.method=='POST':
             name=request.POST.get('username')
             password=request.POST.get('password')
-
             user=authenticate(request,username=name,password=password)
             if user is not None:
                 login(request,user)
