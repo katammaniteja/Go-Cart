@@ -1,12 +1,13 @@
 from django.shortcuts import render,HttpResponseRedirect,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.urls import reverse
-from store.forms import customForm
+from store.forms import RegisterForm
 from django.contrib import messages
+
 def register(request):
-    form=customForm()
+    form=RegisterForm()
     if request.method=='POST':
-        form=customForm(request.POST)
+        form=RegisterForm(request.POST)
         if form.is_valid():
             form.save();
             messages.success(request,"Registered Successfully! Login to continue")

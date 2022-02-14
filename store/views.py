@@ -17,7 +17,7 @@ def collections(request):
     return render(request, 'store/collections.html',context)
 
 def collectionsView(request,slug):
-    if Categories.objects.filter(slug=slug,status=0):
+    if Categories.objects.filter(slug=slug,status=0).exists():
         products=Products.objects.filter(category__slug=slug)
         category=Categories.objects.filter(slug=slug).first()
         context={"products":products,"category":category};
@@ -27,8 +27,8 @@ def collectionsView(request,slug):
         return HttpResponseRedirect(reverse('home'))
 
 def productView(request,cate_slug,pro_slug):
-    if Categories.objects.filter(slug=cate_slug,status=0):
-        if Products.objects.filter(slug=pro_slug,status=0):
+    if Categories.objects.filter(slug=cate_slug,status=0).exists():
+        if Products.objects.filter(slug=pro_slug,status=0).exists():
             products=Products.objects.filter(slug=pro_slug,status=0).first()
             context={"products":products}
             return render(request, 'store/products/view.html',context)

@@ -105,7 +105,6 @@ class Profile(models.Model):
     state=models.CharField(max_length=150,null=False)
     country=models.CharField(max_length=150,null=False)
     pincode=models.CharField(max_length=150,null=False)
-    created_at=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.user.username

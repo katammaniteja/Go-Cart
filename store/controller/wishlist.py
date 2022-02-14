@@ -18,9 +18,8 @@ def addtowishlist(request):
     if request.method=='POST':
         if request.user.is_authenticated:
             prod_id=int(request.POST.get('product_id'))
-            product_check=Products.objects.get(id=prod_id)
-            if(product_check):
-                if(Wishlist.objects.filter(user=request.user,product_id=prod_id)):
+            if(Products.objects.filter(id=prod_id).exists()):
+                if(Wishlist.objects.filter(user=request.user,product_id=prod_id).exists()):
                     return JsonResponse({"status":"Product already in the wishlist","tag":"notify"})
                 else:
                     Wishlist.objects.create(user=request.user,product_id=prod_id)

@@ -64,11 +64,10 @@ def placeorder(request):
         
         neworder.total_price=total_price
         trackno=str(random.randint(111111111, 999999999))
-        while Order.objects.filter(tracking_no=trackno) is None:
+        while Order.objects.filter(tracking_no=trackno).exists():
             trackno=str(random.randint(111111111, 999999999))
         neworder.tracking_no=trackno
         neworder.save()
-
 
         neworderitems=Cart.objects.filter(user=request.user)
         for item in neworderitems:
@@ -92,7 +91,6 @@ def placeorder(request):
             return JsonResponse({"status":"Your order has been placed successfully!"});
         else:
             messages.success(request, "Your order has been placed successfully!")
-
     return redirect('/')
 
 def razorpaycheck(request):
