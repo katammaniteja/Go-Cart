@@ -6,7 +6,6 @@ $(document).ready(function () {
             method:"GET",
             url:"/items_list",
             success:function(response){
-               // console.log(response)
               availableTags=response;
               startAutoComplete(availableTags);
             }

@@ -1,9 +1,7 @@
 from django.shortcuts import render,HttpResponseRedirect,redirect
 from django.urls import reverse
 from django.contrib import messages
-from django.http import JsonResponse
 from store.models import Order,OrderItem
-from django.contrib.auth.decorators import login_required
 
 def index(request):
     if not request.user.is_authenticated:
