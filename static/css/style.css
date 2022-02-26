@@ -34,6 +34,15 @@ a {
   box-shadow: none!important;
   border:1px solid #ccc !important;
 }
+footer{
+  height: 50px;
+  background-color: #F5F5F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #A2887D;
+}
 @media screen and (max-width:992px) {
   .search_bar{
     margin:auto;
