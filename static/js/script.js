@@ -1,27 +1,29 @@
 $(document).ready(function () {
     // Search Products
-    $( function() {
+    $(function () {
         var availableTags = [];
         $.ajax({
-            method:"GET",
-            url:"/items_list",
-            success:function(response){
-              availableTags=response;
-              startAutoComplete(availableTags);
+            method: "GET",
+            url: "/items_list",
+            success: function (response) {
+                console.log(response)
+                availableTags = response;
+                startAutoComplete(availableTags);
             }
         });
-        function startAutoComplete(availableTags){
-          $( "#search_item" ).autocomplete({
-            source: availableTags
-          });
+        function startAutoComplete(availableTags) {
+            $("#search_item").autocomplete({
+                source: availableTags
+            });
         }
-    } );
+    });
+
 
     // On changing the quantity of item required in input filed
-    $(document).on('blur','.qty-input',function(e){
-        var max_value=$(this).closest('.product_data').find('.max_value').val();
+    $(document).on('blur', '.qty-input', function (e) {
+        var max_value = $(this).closest('.product_data').find('.max_value').val();
         var value = $(this).closest('.product_data').find('.qty-input').val();
-        $(this).closest('.product_data').find('.qty-input').val(Math.min(max_value,Math.max(value,1)));
+        $(this).closest('.product_data').find('.qty-input').val(Math.min(max_value, Math.max(value, 1)));
     })
 
     // on decreasing the quatity of product required
@@ -37,16 +39,16 @@ $(document).ready(function () {
     // on increasing the quatity of product required
     $(document).on('click', '.increment-btn', function (e) {
         e.preventDefault();
-        var max_value=$(this).closest('.product_data').find('.max_value').val();
+        var max_value = $(this).closest('.product_data').find('.max_value').val();
         var value = $(this).closest('.product_data').find('.qty-input').val();
         value = parseInt(value);
-        if (value < max_value){
+        if (value < max_value) {
             value++;
         }
-        else if(max_value==0){
+        else if (max_value == 0) {
             swal("Out of stock");
-        } 
-        else{
+        }
+        else {
             swal(`Only ${max_value} quantity are available`);
         }
         $(this).closest('.product_data').find('.qty-input').val(value);
@@ -63,7 +65,7 @@ $(document).ready(function () {
             url: "/add-to-cart",
             data: {
                 'product_id': prod_id,
-                'product_qty': prod_qty, 
+                'product_qty': prod_qty,
                 csrfmiddlewaretoken: token,
             },
             success: function (response) {
@@ -99,7 +101,7 @@ $(document).ready(function () {
                 csrfmiddlewaretoken: token,
             },
             success: function (response) {
-                
+
             }
         });
     });

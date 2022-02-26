@@ -3,6 +3,8 @@ from .models import Categories,Products
 from django.urls import reverse
 from django.contrib import messages
 from django.http import JsonResponse
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 # Create your views here.
 def home(request):
@@ -39,12 +41,13 @@ def productView(request,cate_slug,pro_slug):
         messages.error(request,"No such category found");
         return HttpResponseRedirect(reverse('home'))
 
-def TotalListAjax(request):
-    products=Products.objects.filter(status=0).values_list('name',flat=True)
-    categories=Categories.objects.filter(status=0).values_list('name',flat=True)
-    products_list=list(products)
-    categories_list=list(categories)
-    return JsonResponse(products_list+categories_list,safe=False)
+class TotalListAjax(APIView):
+    def get(self,request):
+        products=Products.objects.filter(status=0).values_list('name',flat=True)
+        categories=Categories.objects.filter(status=0).values_list('name',flat=True)
+        products_list=list(products)
+        categories_list=list(categories)
+        return Response(products_list+categories_list)
 
 def searched(request):
     if request.method=='POST':
