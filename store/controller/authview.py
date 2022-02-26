@@ -6,7 +6,7 @@ from django.contrib import messages
 def register(request):
     form=RegisterForm()
     if request.method=='POST':
-        form=RegisterForm(request.POST)
+        form=RegisterForm(data=request.POST)
         if form.is_valid():
             form.save();
             messages.success(request,"Registered Successfully! Login to continue")
@@ -36,4 +36,6 @@ def logoutpage(request):
     if request.user.is_authenticated:
         logout(request)
         messages.success(request,"Logged out successfully")
+    else:
+        messages.error(request,"Invalid operation")
     return redirect('/')

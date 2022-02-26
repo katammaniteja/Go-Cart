@@ -1,5 +1,6 @@
 $(document).ready(function () {
     // Search Products
+    // https://jqueryui.com/autocomplete/
     $(function () {
         var availableTags = [];
         $.ajax({
@@ -17,7 +18,6 @@ $(document).ready(function () {
             });
         }
     });
-
 
     // On changing the quantity of item required in input filed
     $(document).on('blur', '.qty-input', function (e) {

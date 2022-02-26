@@ -34,8 +34,8 @@ def deletewishitem(request):
     if request.method=='POST':
         if request.user.is_authenticated:
             prod_id=int(request.POST.get('product_id'))
-            if(Wishlist.objects.filter(user=request.user,product_id=prod_id)):
-                wishlistitem=Wishlist.objects.filter(user=request.user,product_id=prod_id)
+            if(Wishlist.objects.filter(user=request.user,product_id=prod_id).exists()):
+                wishlistitem=Wishlist.objects.get(user=request.user,product_id=prod_id)
                 wishlistitem.delete()
                 return JsonResponse({"status":"Product removed from wishlist","tag":"success"})
             else:
