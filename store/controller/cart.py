@@ -29,7 +29,7 @@ def viewcart(request):
     if request.user.is_authenticated:
         cart=Cart.objects.filter(user=request.user)
         context={'cart':cart}
-        return render(request,"store/cart.html",context)
+        return render(request,"cart.html",context)
     else:
         messages.error(request,"Please login to view your cart")
         return HttpResponseRedirect(reverse('loginpage'))

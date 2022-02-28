@@ -21,7 +21,7 @@ def index(request):
 
     userprofile=Profile.objects.filter(user=request.user).first()
     context={'cartitems':cartitems,'total_price':total_price,'userprofile':userprofile}
-    return render(request,'store/checkout.html',context)
+    return render(request,'checkout.html',context)
 
 def placeorder(request):
     if request.method=='POST':

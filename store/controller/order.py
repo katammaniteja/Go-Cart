@@ -9,7 +9,7 @@ def index(request):
         return HttpResponseRedirect(reverse('home'))
     orders=Order.objects.filter(user=request.user)
     context={"orders":orders}
-    return render(request,'store/orders/index.html',context)
+    return render(request,'orders/index.html',context)
 
 def vieworder(request,t_no):
     if not request.user.is_authenticated:
@@ -21,4 +21,4 @@ def vieworder(request,t_no):
         'order':order,
         "orderitems":orderItems
     }
-    return render(request, 'store/orders/view.html',context) 
+    return render(request, 'orders/view.html',context) 
