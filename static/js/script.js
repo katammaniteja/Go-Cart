@@ -71,6 +71,7 @@ $(document).ready(function () {
                 var tag = response.tag;
                 if (tag == "success") {
                     alertify.success(response.status);
+                    $('#navbar').load(location.href + " #navbar");
                 }
                 else if (tag == "warning") {
                     alertify.warning(response.status);
@@ -81,7 +82,6 @@ $(document).ready(function () {
                 else {
                     alertify.notify(response.status);
                 }
-                $('#navbar').load(location.href + " #navbar")
             }
         });
     });
@@ -121,7 +121,7 @@ $(document).ready(function () {
             success: function (response) {
                 alertify.notify(response.status);
                 $('#cartdata').load(location.href + " #cartdata");
-                $('#navbar').load(location.href + " #navbar")
+                $('#navbar').load(location.href + " #navbar");
             }
         });
     });
@@ -142,6 +142,7 @@ $(document).ready(function () {
                 var tag = response.tag;
                 if (tag == "success") {
                     alertify.success(response.status);
+                    $('#navbar').load(location.href + " #navbar");
                 }
                 else if (tag == "warning") {
                     alertify.warning(response.status);
@@ -152,7 +153,6 @@ $(document).ready(function () {
                 else {
                     alertify.notify(response.status);
                 }
-                $('#navbar').load(location.href + " #navbar")
             }
         });
     });
@@ -172,7 +172,7 @@ $(document).ready(function () {
             success: function (response) {
                 alertify.notify(response.status);
                 $('#whislistdata').load(location.href + " #whislistdata");
-                $('#navbar').load(location.href + " #navbar")
+                $('#navbar').load(location.href + " #navbar");
             }
         });
     });

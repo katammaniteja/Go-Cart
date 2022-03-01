@@ -11,7 +11,7 @@ def addtocart(request):
             product_check=Products.objects.filter(id=prod_id).first()
             if(product_check):
                 if(Cart.objects.filter(user_id=request.user.id,product_id=prod_id).exists()):
-                    return JsonResponse({'status':"Product already in the cart",'tag':"success"})
+                    return JsonResponse({'status':"Product already in the cart",'tag':"notify"})
                 else:
                     prod_qty=int(request.POST.get('product_qty'))
                     if product_check.quantity >= prod_qty:
