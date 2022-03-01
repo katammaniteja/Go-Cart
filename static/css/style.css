@@ -43,6 +43,10 @@ footer{
   font-size: 1.1rem;
   color: #A2887D;
 }
+.badge{
+  position: relative;
+  bottom: 2px;
+}
 @media screen and (max-width:992px) {
   .search_bar{
     margin:auto;
