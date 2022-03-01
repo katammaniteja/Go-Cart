@@ -50,7 +50,7 @@ class Cart(models.Model):
         ordering=['-created_at']
 
 class Wishlist(models.Model):
-    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    user=models.ForeignKey(User, on_delete=models.CASCADE,related_name='user_wishlist')
     product=models.ForeignKey(Products, on_delete=models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True)
 

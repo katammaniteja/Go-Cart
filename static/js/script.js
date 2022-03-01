@@ -7,7 +7,6 @@ $(document).ready(function () {
             method: "GET",
             url: "/items_list",
             success: function (response) {
-                console.log(response)
                 availableTags = response;
                 startAutoComplete(availableTags);
             }
@@ -82,6 +81,7 @@ $(document).ready(function () {
                 else {
                     alertify.notify(response.status);
                 }
+                $('#navbar').load(location.href + " #navbar")
             }
         });
     });
@@ -121,6 +121,7 @@ $(document).ready(function () {
             success: function (response) {
                 alertify.notify(response.status);
                 $('#cartdata').load(location.href + " #cartdata");
+                $('#navbar').load(location.href + " #navbar")
             }
         });
     });
@@ -151,6 +152,7 @@ $(document).ready(function () {
                 else {
                     alertify.notify(response.status);
                 }
+                $('#navbar').load(location.href + " #navbar")
             }
         });
     });
@@ -170,6 +172,7 @@ $(document).ready(function () {
             success: function (response) {
                 alertify.notify(response.status);
                 $('#whislistdata').load(location.href + " #whislistdata");
+                $('#navbar').load(location.href + " #navbar")
             }
         });
     });
