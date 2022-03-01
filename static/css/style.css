@@ -39,7 +39,7 @@ footer{
   background-color: #F5F5F5;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-size: 1.1rem;
   color: #A2887D;
 }
