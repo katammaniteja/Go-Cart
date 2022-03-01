@@ -25,7 +25,7 @@
           <a class="nav-link {% if request.resolver_match.url_name == 'collections' %}active{% endif %}" href="{% url 'collections' %}">Collections</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.url_name == 'viewcart' %}active{% endif %}" href="{% url 'viewcart' %}">Cart <span class="badge bg-success">{{user.user_cart.count}}</span></a>
+          <a class="nav-link {% if request.resolver_match.url_name == 'viewcart' %}active{% endif %}" href="{% url 'viewcart' %}">Cart <span class="badge bg-primary">{{user.user_cart.count}}</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link {% if request.resolver_match.url_name == 'wishlist' %}active{% endif %}" href="{% url 'wishlist' %}">Wishlist <span class="badge bg-warning">{{user.user_wishlist.count}}</span></a>
