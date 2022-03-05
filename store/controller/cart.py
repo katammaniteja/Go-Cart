@@ -51,5 +51,5 @@ def deletecartitem(request):
         if(Cart.objects.filter(user=request.user,product_id=prod_id).exists()):
             cartitem=Cart.objects.get(product_id=prod_id,user=request.user)
             cartitem.delete()
-            return JsonResponse({'status':"Item removed from cart",'tag':'success'})
+            return JsonResponse({'status':"Product removed from cart",'tag':'success'})
     return redirect("/")
