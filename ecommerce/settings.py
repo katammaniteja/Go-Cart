@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ryvtv@o_5#t#)7mp+8b=uf&q*e0$7@4^=a6gdaz(*se6tf%ag2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','mani-ecommerce.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
