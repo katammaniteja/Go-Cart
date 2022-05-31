@@ -15,6 +15,7 @@ def Register(request):
             send_mail(
                 subject="Welcome to Go Cart", 
                 message="You have successfully registered to Go Cart. Thank you for being a part", 
+                from_email="Go Cart",
                 auth_user=settings.EMAIL_HOST_USER, 
                 recipient_list=[request.POST.get('email')],
                 fail_silently=False
